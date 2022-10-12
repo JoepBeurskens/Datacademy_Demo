@@ -128,5 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-data/
 ./Modules/M7_FINAL/src/savedModels/
