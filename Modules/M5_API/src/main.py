@@ -4,11 +4,12 @@ from typing import Dict
 from fastapi import FastAPI
 
 app = FastAPI()
-dataPath = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "data", "M5_API", "customers.json")
+dataPath = os.path.join(os.getcwd().split('Datacademy_Demo')[0], "datacademy_demo", "data", "M5_API", "customers.json")
 
 with open(dataPath, 'rb') as jsonFile:
     customers = json.load(jsonFile)
     customers = {i: customers[str(i)] for i in range(len(customers.keys()))}
+
 
 
 
