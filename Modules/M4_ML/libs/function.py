@@ -1,8 +1,8 @@
 import os
-import numpy as np 			        # linear algebra
-import pandas as pd 			    # data processing
+import numpy as np 			        
+import pandas as pd 			    
 import random
-import matplotlib.pyplot as plt		# visualization
+import matplotlib.pyplot as plt		
 from sklearn import datasets
 
 
@@ -10,8 +10,8 @@ class Function():
     def __init__(self, file_name='iris.csv'):
         self.file_name = file_name
         self.data = datasets.load_iris()
-        self.working_dir = os.path.join(os.getcwd().split('Datacademy')[0], "Datacademy", "Modules", "M4_ML", "src")
-        self.data_dir = os.path.join(os.getcwd().split('Datacademy')[0], "Datacademy", "data", "M4_ML")
+        self.working_dir = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "Modules", "M4_ML", "src")
+        self.data_dir = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "data", "M4_ML")
         self.database_location = os.path.join(self.working_dir, self.file_name)
 
         self.imputed_outlier_index = 72
