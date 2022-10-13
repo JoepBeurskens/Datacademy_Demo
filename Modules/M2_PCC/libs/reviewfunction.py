@@ -17,11 +17,11 @@ class ReviewFunction:
     def check_answer(self, answer, exercise):
         if len(exercise) == 2:
             if exercise[0] == "B":
-                self.check_B(answer, exercise)
+                return self.check_B(answer, exercise)
             elif exercise[0] == "C":
-                self.check_C(answer, exercise)
+                return self.check_C(answer, exercise)
             elif exercise[0] == "E":
-                self.check_E(answer, exercise)
+                return self.check_E(answer, exercise)
             else:
                 print("You didn't specify a correct exercise reference.")
         else:
