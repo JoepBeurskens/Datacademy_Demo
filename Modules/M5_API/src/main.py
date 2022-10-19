@@ -21,17 +21,6 @@ def get_customer(customerId: int) -> dict:
     return customers[customerId]
 
 
-# @app.get("/get-customer-by-name/")
-# def get_customer_by_name(lastName: str) -> dict:
-#     #TODO: INSERT API CODE HERE.
-
-
-# @app.get("/get-customers/")
-# def get_customers(skip: int, limit: int) -> dict:
-#     #TODO: INSERT API CODE HERE.
-
-
-
 
 
 ### API POST Request(s) ####
@@ -48,12 +37,6 @@ def create_customer(customerId: int, firstName: str, lastName: str, address: str
     return customers[customerId]
 
 
-# @app.post("/create-customer-auto-increment/")
-# def create_customer(firstName: str, lastName: str, address: str) -> dict:
-#     #TODO: INSERT API CODE HERE.
-
-
-
 
 
 ### API PUT Request(s) ####
@@ -64,12 +47,6 @@ def update_customer_address(customerId: int, address: str) -> dict:
     
     customers[customerId]['address'] = address
     return customers[customerId]
-
-
-# @app.put("/update-customer-address-by-name/")
-# def update_customer_address(firstName: str, lastName: str, address: str) -> dict:
-#     #TODO: INSERT API CODE HERE.
-
 
 
 
@@ -84,6 +61,4 @@ def delete_customer(customerId:int) -> dict:
     return {"Message": "Customer deleted successfully."}
 
 
-# @app.delete("/delete-customer-by-name/")
-# def delete_customer_by_name(firstName: str, lastName:str) -> dict:
-#     #TODO: INSERT API CODE HERE.
+
