@@ -2,7 +2,7 @@ import os
 import numpy as np 			        
 import pandas as pd 			    
 import random
-import matplotlib.pyplot as plt		
+import matplotlib.pyplot as plt
 from sklearn import datasets
 
 
@@ -10,13 +10,16 @@ class Function():
     def __init__(self, file_name='iris.csv'):
         self.file_name = file_name
         self.data = datasets.load_iris()
-        self.working_dir = os.path.join(os.getcwd().split('Datacademy_Demo')[0], "Datacademy_Demo", "Modules", "M4_ML", "src")
-        self.data_dir = os.path.join(os.getcwd().split('Datacademy_Demo')[0], "Datacademy_Demo", "data", "M4_ML")
+        self.working_dir = os.path.join(os.getcwd().split('Datacademy')[0], "Datacademy", "Modules", "M4_ML", "src")
+        self.answer_dir = os.path.join(os.getcwd().split('Datacademy')[0], "Datacademy", "Modules", "M4_ML")
         self.database_location = os.path.join(self.working_dir, self.file_name)
 
         self.imputed_outlier_index = 72
 
         self.iris = self.data_modification()
+        self.preprocessed_dataframe = None
+        self.supervised_dataframe = None
+        self.created_pipeline = None
 
 
     def data_modification(self) -> pd.DataFrame:
@@ -47,6 +50,7 @@ class Function():
         iris.loc[index_val, 'sepal length (cm)'] = new_value
 
         return iris
+
 
     def remove_0_in_outlier(self, outlier_value:float) -> None:
         """
@@ -79,6 +83,7 @@ class Function():
         self.iris = self.data_modification()
         self.iris['target'] = self.data.target.tolist()
 
+
     def get_unsupervised_dataset(self) -> pd.DataFrame:
         """
         Return the saved unsupervised dataset that is saved when preparing the supervised learning set.
@@ -88,11 +93,36 @@ class Function():
         """
         return self.unsupervised_dataset
 
-    def execute_function(self, exercise:str=None, save_output:bool=True):
+
+    def execute_function(self, answer, exercise:str=None, save_output:bool=True) -> str:
+        if not isinstance(answer, pd.DataFrame):
+            answers_df = pd.DataFrame(data={
+                "answer": [answer]})
+        else:
+            answers_df = answer
+        
         if save_output:
-            if not os.path.exists(os.path.join(self.data_dir, "answers")):
-                os.mkdir(os.path.join(self.data_dir, "answers"))
+            if not os.path.exists(os.path.join(self.answer_dir, "answers")):
+                os.mkdir(os.path.join(self.answer_dir, "answers"))
             if exercise is None:
                 return "Please provide the exercise name in the function if you want to save the outputs."
-            self.data.to_csv(os.path.join(self.data_dir, "answers", f"{exercise}.csv"), sep=";", index=False)
-        return self.data
+            answers_df.to_csv(os.path.join(self.answer_dir, "answers", f"{exercise}.csv"), sep=";", index=False)
+        
+        return "Answer successfully submitted!"
+
+
+    def save_preprocessed_dataframe(self, preprocessed_df:pd.DataFrame) -> str:
+        self.preprocessed_dataframe = preprocessed_df
+    
+        return "Successfully saved the preprocessed DataFrame."
+
+
+    def save_supervised_dataframe(self, supervised_df:pd.DataFrame) -> str:
+        self.supervised_dataframe = supervised_df
+        
+        return "Successfully saved the supervised DataFrame."
+
+    def save_pipeline_for_later_evaluation(self, pipeline, df:pd.DataFrame):
+        self.created_pipeline = pipeline
+
+        return "Successfully saved your created pipeline."
