@@ -9,7 +9,7 @@ from typing import Optional
 
 class Database:
     def __init__(self, db_name='M3_SQL.db'):
-        self.directory_name='datacademy_demo'
+        self.directory_name='Datacademy_Demo'
         self.db_name = db_name
         self.working_dir = os.path.join(os.getcwd().split(self.directory_name)[0], self.directory_name, "Modules", "M3_SQL", "src")
         self.data_dir = os.path.join(os.getcwd().split(self.directory_name)[0], self.directory_name, "data", "M3_SQL")

@@ -72,7 +72,6 @@ class CheckResults():
                 self.results[self.module][exercise]['hint'] = f"{exercise}: Expected the value '{value}' in column '{column}', but it isn't there"
                 
     
-
     def _validate_sum(self, exercise, column, answer):
         correct = self.correct_answers[self.module][exercise]['sum'][column]
         if correct != answer:
