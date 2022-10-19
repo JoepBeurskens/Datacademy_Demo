@@ -17,11 +17,11 @@ class ReviewFunction:
     def check_answer(self, answer, exercise):
         if len(exercise) == 2:
             if exercise[0] == "B":
-                return self.check_B(answer, exercise)
+                self.check_B(answer, exercise)
             elif exercise[0] == "C":
-                return self.check_C(answer, exercise)
+                self.check_C(answer, exercise)
             elif exercise[0] == "E":
-                return self.check_E(answer, exercise)
+                self.check_E(answer, exercise)
             else:
                 print("You didn't specify a correct exercise reference.")
         else:
@@ -52,7 +52,7 @@ class ReviewFunction:
                 return "Incorrect! You might want to check your math once more"
         
         if ex[1] == "4":
-            if ans == False:
+            if ans == True:
                 return "Correct! They call it an 'upgrade'."
             else:
                 return "Incorrect! Bigger is not always better."
@@ -113,7 +113,7 @@ class ReviewFunction:
             return print(pd.DataFrame(data=d).head(2))
 
         if ex[1] == "6":
-            X = self.review.data.target
+            X = self.data.target
             Y = ans['column_1'].tolist()
             Y1 = ans['column_2'].tolist()
 
