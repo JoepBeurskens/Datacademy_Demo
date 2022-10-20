@@ -1,0 +1,23 @@
+name: ML tests
+
+on: 
+  push:
+    paths:
+      - 'Modules/M4_ML/**'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+    - name: Install Dependencies
+      run: | 
+        pip install -r requirements.txt
+        pip install pytest
+        pip install -e .
+    - name: PyTest
+      run: |
+        pytest -v Modules/M4_ML/tests/test.py
+          
