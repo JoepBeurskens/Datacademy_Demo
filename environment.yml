@@ -100,7 +100,6 @@ dependencies:
   - python-dateutil=2.8.2=pyhd3eb1b0_0
   - python_abi=3.10=2_cp310
   - pytz=2022.1=py310haa95532_0
-  - pywin32=303=py310he2412df_0
   - pyzmq=23.2.1=py310h73ada01_0
   - qt-main=5.15.2=he8e5bd7_7
   - qt-webengine=5.15.9=hb9a9bb5_4
