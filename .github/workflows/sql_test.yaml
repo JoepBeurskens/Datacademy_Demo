@@ -14,9 +14,8 @@ jobs:
       uses: actions/setup-python@v4
     - name: Install Dependencies
       run: |
-        pip install -r requirements.txt
+        pip install pandas
         pip install pytest
-        pip install -e .
     - name: PyTest
       run: |
         pytest -v Modules/M3_SQL/tests/test.py
