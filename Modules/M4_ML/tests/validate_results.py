@@ -50,7 +50,7 @@ class CheckResults():
                     "n_columns": 5,
                     "check": {
                         "name": 'state',
-                        "val1": 'dry'
+                        "val1": 'wet'
                     }
                 },
                 'R_C2': {
