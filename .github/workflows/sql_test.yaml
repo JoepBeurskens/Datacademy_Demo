@@ -13,7 +13,8 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
     - name: Install Dependencies
-      run: | 
+      run: |
+        apt install libopenblas-dev 
         pip install -r requirements.txt
         pip install pytest
         pip install -e .
