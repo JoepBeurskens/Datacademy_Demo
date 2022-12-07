@@ -16,6 +16,7 @@ jobs:
       run: |
         pip install pandas
         pip install pytest
+        pip install -e .
     - name: PyTest
       run: |
         pytest -v Modules/M3_SQL/tests/test.py
