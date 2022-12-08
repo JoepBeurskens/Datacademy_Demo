@@ -11,7 +11,7 @@ At the bottom of these notebooks all steps are discussed in great detail.
 """
 
 app = FastAPI()
-# dataPath = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "data", "M5_API", "customers.json")
+#dataPath = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "data", "M5_API", "customers.json")
 dataPath = os.path.join("data", "M5_API", "customers.json")
 
 with open(dataPath, 'rb') as jsonFile:
