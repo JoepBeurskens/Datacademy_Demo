@@ -3,13 +3,6 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
-
-def test_welcome():
-    response = client.get("/")
-    assert response.status_code == 200
-    assert response.json() == "Welcome at the Module 5 API!"
-
-
 def test_get_customer():
     response = client.get("/get-customer/0")
     assert response.status_code == 200
@@ -55,40 +48,29 @@ def test_create_customer():
         "firstName": "Jan",
         "lastName": "Janssen",
         "address": "Kerkstraat 10"
-        }
+           }
 
-    response = client.post("/create-customer/21", json=data)
-
+    response = client.post("/create-customer/12?firstName=Jan&lastName=Janssen&address=Kerkstraat%2010")
+    
     assert response.status_code == 200
     assert response.json() == data
-    assert client.get("/get-customer/21").json() == data
 
 
 def test_create_customer_auto_increment():
-    data = {
-        "firstName": "Fred",
-        "lastName": "De Vries",
-        "address": "Ons Dorp 1"
-        }
-
-    response = client.post(
-        "/create-customer-auto-increment/",
-        json=data)
-
+    response = client.get("/get-customers/?skip=0&limit=1000")
+    keys_customers = list(response.json().keys())
+    
     assert response.status_code == 200
-    assert response.json() == data
-    assert client.get((f"/get-customer-by-name/{data['lastName']}")).json() == data
+    assert (int(keys_customers[-1]) - int(keys_customers[-2])) == 1
 
 
 def test_update_customer_address():
     data = {"address": "Ons Dorp 100"}
 
-    response = client.put(
-        "/update-customer-address/1", json=data)
+    response = client.put("/update-customer-address/1?address=Ons%20Dorp%20100")
     assert response.status_code == 200
     assert response.json()['address'] == data["address"]
-    assert client.get(
-        "/get-customer/1").json()['address'] == data["address"]
+    assert client.get("/get-customer/1").json()['address'] == data["address"]
 
 
 def test_update_customer_address_by_name():
@@ -98,8 +80,7 @@ def test_update_customer_address_by_name():
         "address": "Imaginary street 1"
         }
 
-    response = client.put(
-        "/update-customer-address-by-name/", json=data)
+    response = client.put("/update-customer-address-by-name/?firstName=John&lastName=Doe&address=Imaginary%20street%201")
 
     assert response.status_code == 200
     assert response.json()['address'] == data["address"]
@@ -116,12 +97,8 @@ def test_delete_customer():
 
 
 def test_delete_customer_by_name():
-    data = {
-        "firstName": "Jamie",
-        "lastName": "Dean"
-        }
-
-    response = client.delete("/delete-customer-by-name/", json=data)
+    response = client.delete("/delete-customer-by-name/?firstName=Jamie&lastName=Dean")
+    
     assert response.status_code == 200
     assert response.json() == {'Message': 'Customer Jamie Dean deleted successfully.'}
     assert 'Customer does not exists yet.' in client.get("/get-customer/2").json()

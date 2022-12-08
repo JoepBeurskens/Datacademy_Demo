@@ -49,8 +49,8 @@ class CheckResults():
                     "n_rows": 150, 
                     "n_columns": 5,
                     "check": {
-                        "name": 'state',
-                        "val1": 'dry'
+                        "name": 'target',
+                        "val1": 0
                     }
                 },
                 'R_C2': {
