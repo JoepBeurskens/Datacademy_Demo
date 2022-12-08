@@ -44,6 +44,19 @@ def test_get_customers():
         }
 
 
+def test_create_customer():
+    data = {
+        "firstName": "Jan",
+        "lastName": "Janssen",
+        "address": "Kerkstraat 10"
+           }
+
+    response = client.get("/create-customer/12?firstName=Jan&lastName=Janssen&address=Kerkstraat%2010")
+    
+    assert response.status_code == 200
+    assert response.json() == data
+
+
 def test_create_customer_auto_increment():
     response = client.get("/get-customers/?skip=0&limit=1000")
     keys_customers = list(response.json().keys())
@@ -55,7 +68,7 @@ def test_create_customer_auto_increment():
 def test_update_customer_address():
     data = {"address": "Ons Dorp 100"}
 
-    response = client.put("/update-customer-address/1?address=Ons%20Drop%20100")
+    response = client.put("/update-customer-address/1?address=Ons%20Dorp%20100")
     assert response.status_code == 200
     assert response.json()['address'] == data["address"]
     assert client.get("/get-customer/1").json()['address'] == data["address"]
