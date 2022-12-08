@@ -3,7 +3,6 @@ from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
-
 def test_get_customer():
     response = client.get("/get-customer/0")
     assert response.status_code == 200
