@@ -51,7 +51,7 @@ def test_create_customer():
         "address": "Kerkstraat 10"
            }
 
-    response = client.get("/create-customer/12?firstName=Jan&lastName=Janssen&address=Kerkstraat%2010")
+    response = client.post("/create-customer/12?firstName=Jan&lastName=Janssen&address=Kerkstraat%2010")
     
     assert response.status_code == 200
     assert response.json() == data
