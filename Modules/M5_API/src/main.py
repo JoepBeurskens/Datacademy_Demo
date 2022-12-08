@@ -26,7 +26,7 @@ def get_customer(customerId: int):
     return customers[customerId]
 
 
-@app.get("/get-customer-by-name/")
+@app.get("/get-customer-by-name/{lastName}")
 def get_customer_by_name(lastName: str):
     for customerId in customers:
         if customers[customerId]['lastName'] == lastName:
@@ -45,6 +45,9 @@ def get_customers(skip: int = 0, limit: int = 3):
 def create_customer(customerId: int, firstName: str, lastName: str, address: str):
     if customerId in customers:
         return {"Error", f"customerId already used, next id available is: {max(customers.keys())+1}."}
+        
+    if (customerId - max(customers.keys())) > 1:
+        return {"Error", f"customerId do not fit neatly together, next id available is: {max(customers.keys())+1}."}
 
     customers[customerId] = {
         "firstName": firstName,
