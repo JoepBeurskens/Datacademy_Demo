@@ -30,9 +30,9 @@ class ReviewFunction:
 
     def check_B(self, ans, ex):
         if ex[1] == "1":
-            if ans < 70.66:
+            if ans < 70.6:
                 return "Incorrect, a Boeing 747-100 is larger."
-            elif ans > 70.66:
+            elif ans > 70.7:
                 return "Incorrect, a Boeing 747-100 is smaller."
             else:
                 return "Correct! A Boeing 747-100 is indeed 70.66 meters."
