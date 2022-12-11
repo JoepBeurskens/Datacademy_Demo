@@ -11,9 +11,9 @@ class Database:
     def __init__(self, db_name='M3_SQL.db'):
         self.directory_name='datacademy_demo'
         self.db_name = db_name
-        self.working_dir = os.path.join(os.getcwd().split(self.directory_name)[0], self.directory_name, "Modules", "M3_SQL", "src")
-        self.data_dir = os.path.join(os.getcwd().split(self.directory_name)[0], self.directory_name, "data", "M3_SQL")
-        self.answer_dir = os.path.join(os.getcwd().split(self.directory_name)[0], self.directory_name, "Modules", "M3_SQL", "answers")
+        self.working_dir = os.path.join(os.getcwd().lower().split(self.directory_name)[0], self.directory_name, "Modules", "M3_SQL", "src")
+        self.data_dir = os.path.join(os.getcwd().lower().split(self.directory_name)[0], self.directory_name, "data", "M3_SQL")
+        self.answer_dir = os.path.join(os.getcwd().lower().split(self.directory_name)[0], self.directory_name, "Modules", "M3_SQL", "answers")
         self.database_location = os.path.join(self.working_dir, self.db_name) 
         self.SQLALCHEMY_DATABASE_URL = f"sqlite:///{self.database_location}"
         
