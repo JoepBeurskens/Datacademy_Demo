@@ -35,7 +35,7 @@ class ReviewFunction:
             elif ans > 70.7:
                 return "Incorrect, a Boeing 747-100 is smaller."
             else:
-                return "Correct! A Boeing 747-100 is indeed 70.66 meters."
+                return "Correct! A Boeing 747-100 is indeed actually 70.66 meters."
         
         if ex[1] == "2":
             if ans < 146.7:
