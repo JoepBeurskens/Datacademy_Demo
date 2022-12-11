@@ -1,0 +1,29 @@
+name: API tests
+
+on: 
+  push:
+    paths:
+      - 'Modules/M5_API/**'
+
+env:
+  TEST_DATACADEMY_ID: ${{ secrets.TEST_DATACADEMY_ID }}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10' 
+    - name: Install dependencies API
+      run: | 
+        pip install httpx
+        pip install fastapi uvicorn[standard]
+        pip install pytest
+        pip install -e .
+    - name: PyTest
+      run: |
+        pytest -v Modules/M5_API/tests/test.py
+          
