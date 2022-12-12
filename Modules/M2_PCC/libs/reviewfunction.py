@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 
 class ReviewFunction:
     def __init__(self):
-        self.working_dir = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "Modules", "M2_PCC", "src")
-        self.data_dir = os.path.join(os.getcwd().split('datacademy_demo')[0], "datacademy_demo", "data", "M2_PCC")
+        self.directory_name='datacademy_demo'
+        self.working_dir = os.path.join(os.getcwd().lower().split(self.directory_name)[0], self.directory_name, "Modules", "M2_PCC", "src")
+        self.data_dir = os.path.join(os.getcwd().lower().split(self.directory_name)[0], self.directory_name, "data", "M2_PCC")
 
         self.data = datasets.load_diabetes()
         self.n_features = self.data.data.shape[1]
@@ -30,12 +31,12 @@ class ReviewFunction:
 
     def check_B(self, ans, ex):
         if ex[1] == "1":
-            if ans < 70.66:
+            if ans < 70.6:
                 return "Incorrect, a Boeing 747-100 is larger."
-            elif ans > 70.66:
+            elif ans > 70.7:
                 return "Incorrect, a Boeing 747-100 is smaller."
             else:
-                return "Correct! A Boeing 747-100 is indeed 70.66 meters."
+                return "Correct! A Boeing 747-100 is indeed actually 70.66 meters."
         
         if ex[1] == "2":
             if ans < 146.7:
